@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  minecraft:
+    image: itzg/minecraft-server:java8-multiarch
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      TYPE: "AUTO_CURSEFORGE"
+      CF_API_KEY: "$$2a$$10$$yFaZuy2XlrAM77o6vWHJeeI2jo7TmRd6xdIPUpvGQ3Li7CHLrl/lu"
+      CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/enigmatica2/files/3375332"
+      CF_EXCLUDE_MODS: "486778"
+      MEMORY: "6G"
+      MAX_MEMORY: "8G"
+      VERSION: "1.12.2"
+      EULA: "TRUE"
+      ONLINE_MODE: "FALSE"
+
+    volumes:
+      # attach the relative directory 'data' to the container's /data path
+      - \\wsl.localhost\Ubuntu\home\thinkpad\MCDATA:/data
+    restart: on-failure:1
+      
